@@ -10,3 +10,4 @@ yew = "0.19.3"
 gloo = "0.8.0"
 serde = "1.0.142"
 serde_json = "1.0.83"
+stylist = {version = "0.10", features = ["yew"]}
