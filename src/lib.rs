@@ -1,10 +1,11 @@
-// use gloo::console::log;
+use gloo::console::log;
 use stylist::{yew::styled_component, Style};
 use yew::prelude::*;
 
 mod components;
 
-use components::atoms::main_title::MainTitle;
+use components::atoms::main_title::{MainTitle, Color};
+use components::molecules::custom_form::CustomForm;
 
 const STYLE_FILE: &str = include_str!("main.css");
 
@@ -12,12 +13,14 @@ const STYLE_FILE: &str = include_str!("main.css");
 pub fn app() -> Html {
     let tasks = vec!["record vid", "grocery shopping", "pet cat"];
     let stylesheet = Style::new(STYLE_FILE).unwrap();
-
     let class = "my_title";
+
+    let main_title_load = Callback::from(|message: String| log!(message));
 
     html! (
         <div class={stylesheet}>
-            <MainTitle title="New Props Header!"/>
+            <MainTitle title="New Props Header!" color={Color::Normal} on_load={main_title_load}/>
+            <CustomForm/>
             <h1>{"Hello, World!"}</h1>
             if class == "my_titles" {
                 <p>{"Hi there!"}</p>
